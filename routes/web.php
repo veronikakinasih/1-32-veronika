@@ -19,8 +19,8 @@ Route::get('/', function () {
 });
 
 Route::get('/', function () {
-    return view('home', [
-        "title" => "home"
+    return view('index', [
+        "title" => "beranda"
     ]);
 });
 
@@ -38,8 +38,7 @@ Route::get('/gallery', function () {
         "title" => "Gallery"
     ]);
 });
-Route::get('/contacts', function () {
-    return view('contacts', [
-        "title" => "Contacts"
-    ]);
-});
+Route::resource('/contacts', ContactController::class);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
